@@ -1,2 +1,4 @@
 # Sistema-Academico
-POO, SOLID Y patrones
+POO, 
+SOLID 
+patrones
