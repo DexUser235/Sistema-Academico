@@ -11,6 +11,7 @@ public class Alumno {
         }
         this.nombre = nombre;
         this.especialidad = especialidad;
+        this.ciclo = ciclo;
 
     }
 
