@@ -14,11 +14,17 @@ public class Docente  {
         this.nombre = nombre;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void impartirClase(){
+
         estrategia.dictarClases();
     }
 
     public void setEstrategia(EstrategiaDictado estrategia) {
+
         this.estrategia = estrategia;
     }
 }

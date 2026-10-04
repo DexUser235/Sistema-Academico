@@ -15,6 +15,10 @@ public class Alumno {
 
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void consultarEstado(){
         System.out.println(" alumno " + nombre + " especialidad "+ especialidad + " ciclo " + ciclo);
     }
