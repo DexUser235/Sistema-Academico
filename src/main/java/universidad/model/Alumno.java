@@ -7,7 +7,7 @@ public class Alumno {
 
     public Alumno(String nombre, Area especialidad, byte ciclo) {
         if (ciclo < 1 || ciclo > 10) {
-       throw new IllegalArgumentException("El ciclo no existe");
+            throw new IllegalArgumentException("El ciclo no existe");
         }
         this.nombre = nombre;
         this.especialidad = especialidad;

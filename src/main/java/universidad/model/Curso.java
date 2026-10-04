@@ -7,7 +7,7 @@ public class Curso {
     private String nombreCurso;
     private Area especialidad;
     private List<Alumno> alumnos;
-;
+    ;
 
     public Curso(String nombreCurso, Area especialidad) {
         this.nombreCurso = nombreCurso;
@@ -15,10 +15,10 @@ public class Curso {
         this.alumnos = new ArrayList<>();
     }
     public void asignarDocentes(Docente docente){
-           // nose xd
+        // nose xd
         System.out.println("hola mundo");
     }
     public void asignarAlumno(Alumno alumno){
-      alumnos.add(alumno);
+        alumnos.add(alumno);
     }
 }
