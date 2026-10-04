@@ -3,9 +3,9 @@ package universidad.model;
 public class Alumno {
     private String nombre;
     private Area especialidad;
-    private int ciclo;
+    private byte ciclo;
 
-    public Alumno(String nombre, Area especialidad, int ciclo) {
+    public Alumno(String nombre, Area especialidad, byte ciclo) {
         if (ciclo < 1 || ciclo > 10) {
        throw new IllegalArgumentException("El ciclo no existe");
         }
@@ -15,7 +15,7 @@ public class Alumno {
 
     }
 
-    public void ConsultarEstado(){
-        System.out.println(" alumno " + nombre + " especoalidad "+ especialidad + " ciclo " + ciclo);
+    public void consultarEstado(){
+        System.out.println(" alumno " + nombre + " especialidad "+ especialidad + " ciclo " + ciclo);
     }
 }
