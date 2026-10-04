@@ -1,6 +1,4 @@
-package universidad.strategy;
-
-import universidad.decorator.DictadoDecorator;
+package universidad.model;
 
 public class ConTeoriaDecartor extends DictadoDecorator {
     public ConTeoriaDecartor(EstrategiaDictado estrategia) {

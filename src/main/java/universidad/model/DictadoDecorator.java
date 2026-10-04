@@ -1,7 +1,5 @@
-package universidad.decorator;
+package universidad.model;
 
-
-import universidad.strategy.EstrategiaDictado;
 
 public  abstract class DictadoDecorator implements EstrategiaDictado {
     protected EstrategiaDictado estrategia;
