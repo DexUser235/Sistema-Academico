@@ -16,6 +16,23 @@ public class Matricula {
         this.nota3=0;
         this.PA=0;
     }
+
+    public float getNota1() {
+        return nota1;
+    }
+
+    public float getNota2() {
+        return nota2;
+    }
+
+    public float getNota3() {
+        return nota3;
+    }
+
+    public float getPA() {
+        return PA;
+    }
+
     public void guardarNotas(float nota1, float nota2, float nota3, float PA){
         if (    nota1<0 || nota1>20 ||
                 nota2<0 || nota2>20 ||
