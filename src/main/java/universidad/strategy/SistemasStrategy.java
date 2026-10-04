@@ -1,6 +1,6 @@
 package universidad.strategy;
 
-public class civilStrategy implements EstrategiaDictado{
+public class SistemasStrategy implements EstrategiaDictado {
     @Override
     public void dictarClases() {
 

@@ -6,4 +6,3 @@ public enum Area {
     Medicina,
     Biologia,
 }
- 
