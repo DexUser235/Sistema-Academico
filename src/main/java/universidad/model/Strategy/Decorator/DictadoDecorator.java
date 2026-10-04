@@ -1,7 +1,9 @@
-package universidad.model;
+package universidad.model.Strategy.Decorator;
 
 
-public  abstract class DictadoDecorator implements EstrategiaDictado {
+import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
+
+public abstract class DictadoDecorator implements EstrategiaDictado {
     protected EstrategiaDictado estrategia;
 
     public DictadoDecorator(EstrategiaDictado estrategia) {

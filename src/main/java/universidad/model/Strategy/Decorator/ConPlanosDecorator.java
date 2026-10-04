@@ -1,4 +1,6 @@
-package universidad.model;
+package universidad.model.Strategy.Decorator;
+
+import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 
 public class ConPlanosDecorator extends DictadoDecorator {
     public ConPlanosDecorator(EstrategiaDictado estrategia) {
@@ -8,6 +10,6 @@ public class ConPlanosDecorator extends DictadoDecorator {
     @Override
     public void dictarClases() {
         super.dictarClases();
-        System.out.println("metodologia con planos");
+        System.out.println("Estudio de los planos impartidos en clase");
     }
 }

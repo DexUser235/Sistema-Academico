@@ -1,5 +1,7 @@
 package universidad.model;
 
+import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
+
 public class Docente  {
     private String nombre;
     private Area especialidades;
@@ -16,6 +18,7 @@ public class Docente  {
     }
 
     public void impartirClase() {
+        System.out.println("Docente: " + getNombre() + " Ha iniciado la sesion");
         estrategia.dictarClases();
     }
 

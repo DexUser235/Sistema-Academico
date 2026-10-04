@@ -6,11 +6,11 @@ import java.util.List;
 public class Curso {
     private String nombreCurso;
     private Area especialidad;
-    private List<Alumno> alumnos;
+    private final List<Matricula> matriculas;
     private Docente docente;
 
     public Curso() {
-        alumnos = new ArrayList<>();
+        matriculas = new ArrayList<>();
     }
 
     public String getNombreCurso() {
@@ -29,8 +29,8 @@ public class Curso {
         this.especialidad = especialidad;
     }
 
-    public List<Alumno> getAlumnos() {
-        return alumnos;
+    public List<Matricula> getMatriculas() {
+        return matriculas;
     }
 
     public Docente getDocente() {
@@ -45,23 +45,33 @@ public class Curso {
         this.docente = nuevoDocente;
     }
 
-    public void asignarAlumno(Alumno alumno) {
-        if (alumno == null) return;
-
-        if (this.alumnos.size() >= 30) {
-            System.out.println("No se pueden añadir más alumnos");
-            return;
-        }
-        this.alumnos.add(alumno);
-    }
-
-    public void asignarAlumnos(List<Alumno> nuevosAlumnos) {
+    public void matricularAlumnos(List<Alumno> nuevosAlumnos) {
         if (nuevosAlumnos == null) return;
 
-        if (this.alumnos.size() + nuevosAlumnos.size() > 30) {
-            System.out.println("La lista excede el límite de 30 alumnos para el curso");
+        if (this.matriculas.size() + nuevosAlumnos.size() > 30) {
+            System.out.println("La lista excede el límite de 30 matriculas para el curso");
             return;
         }
-        this.alumnos.addAll(nuevosAlumnos);
+
+        for (Alumno a : nuevosAlumnos) {
+            matricularAlumno(a);
+        }
+    }
+
+    public void matricularAlumno(Alumno alumno) {
+        if (alumno == null) return;
+
+        if (this.matriculas.size() >= 30) {
+            System.out.println("No se pueden añadir más matriculas");
+            return;
+        }
+
+        Matricula nuevaMatricula = new Matricula(alumno, this);
+        this.matriculas.add(nuevaMatricula);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("- Curso: %s \n- Docente: %s \n- alumnos matriculados: %d", getNombreCurso(), getDocente().getNombre(), getMatriculas().size());
     }
 }

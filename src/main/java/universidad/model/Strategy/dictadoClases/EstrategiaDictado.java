@@ -1,4 +1,4 @@
-package universidad.model;
+package universidad.model.Strategy.dictadoClases;
 
 public interface EstrategiaDictado {
     void dictarClases();

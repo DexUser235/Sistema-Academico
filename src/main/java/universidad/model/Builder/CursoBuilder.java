@@ -1,4 +1,9 @@
-package universidad.model;
+package universidad.model.Builder;
+
+import universidad.model.Alumno;
+import universidad.model.Area;
+import universidad.model.Curso;
+import universidad.model.Docente;
 
 import java.util.List;
 

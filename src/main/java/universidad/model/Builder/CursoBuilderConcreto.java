@@ -1,12 +1,17 @@
-package universidad.model;
+package universidad.model.Builder;
+
+import universidad.model.Alumno;
+import universidad.model.Area;
+import universidad.model.Curso;
+import universidad.model.Docente;
 
 import java.util.List;
 
 public class CursoBuilderConcreto implements CursoBuilder{
     private Curso curso;
 
-    public CursoBuilderConcreto(Curso curso) {
-        this.curso = curso;
+    public CursoBuilderConcreto() {
+        this.curso = new Curso();
     }
 
     @Override
@@ -22,12 +27,12 @@ public class CursoBuilderConcreto implements CursoBuilder{
 
     @Override
     public void construirAlumnos(List<Alumno> alumnos) {
-        curso.asignarAlumnos(alumnos);
+        curso.matricularAlumnos(alumnos);
     }
 
     @Override
     public void construirAlumno(Alumno alumno) {
-        curso.asignarAlumno(alumno);
+        curso.matricularAlumno(alumno);
     }
 
     @Override

@@ -1,4 +1,6 @@
-package universidad.model;
+package universidad.model.Strategy.Decorator;
+
+import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 
 public class ConTeoriaDecartor extends DictadoDecorator {
     public ConTeoriaDecartor(EstrategiaDictado estrategia) {
@@ -7,7 +9,7 @@ public class ConTeoriaDecartor extends DictadoDecorator {
 
     @Override
     public void dictarClases() {
+        System.out.println("Explicacion teorica mediante diapositivas");
         super.dictarClases();
-        System.out.println(" Metodologia con teoria");
     }
 }
