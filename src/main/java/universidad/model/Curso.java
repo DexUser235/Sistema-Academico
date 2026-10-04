@@ -3,7 +3,7 @@ package universidad.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Curso {
+public class Curso{
     private String nombreCurso;
     private Area especialidad;
     private List<Alumno> alumnos;
