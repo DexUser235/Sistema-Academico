@@ -21,7 +21,8 @@ public class App {
 
         List<Alumno> alumnos = new ArrayList<>();
         alumnos.add(new Alumno("1", "Juan Gómez", Area.Sistemas, (byte) 1));
-        alumnos.add(new Alumno("2","Maria López", Area.Sistemas, (byte) 1));
+        alumnos.add(new Alumno("2","Maria López", Area.Civil, (byte) 1));
+        alumnos.add(new Alumno("3","Maria López", Area.Sistemas, (byte) 1));
 
         CursoBuilderConcreto builder = new CursoBuilderConcreto();
         CursoDirector director = new CursoDirector();

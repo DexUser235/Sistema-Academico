@@ -17,6 +17,14 @@ public class Docente  {
         return nombre;
     }
 
+    public Area getEspecialidades() {
+        return especialidades;
+    }
+
+    public EstrategiaDictado getEstrategia() {
+        return estrategia;
+    }
+
     public void impartirClase() {
         System.out.println("Docente: " + getNombre() + " Ha iniciado la sesion");
         estrategia.dictarClases();

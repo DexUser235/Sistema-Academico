@@ -42,6 +42,13 @@ public class Curso {
             System.out.println("El curso ya tiene un docente asignado.");
             return;
         }
+
+        if (this.especialidad != null && nuevoDocente.getEspecialidades() != this.especialidad) {
+            System.out.println("El docente " + nuevoDocente.getNombre() +
+                    " (" + nuevoDocente.getEspecialidades() + ") no pertenece al área del curso (" + this.especialidad + ")");
+            return;
+        }
+
         this.docente = nuevoDocente;
     }
 
@@ -63,6 +70,12 @@ public class Curso {
 
         if (this.matriculas.size() >= 30) {
             System.out.println("No se pueden añadir más matriculas");
+            return;
+        }
+
+        if (this.especialidad != null && alumno.getEspecialidad() != this.especialidad) {
+            System.out.println("Error: El alumno " + alumno.getNombre() +
+                    " (" + alumno.getEspecialidad() + ") no pertenece al área del curso (" + this.especialidad + ").");
             return;
         }
 
