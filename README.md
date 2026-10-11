@@ -1,4 +1,4 @@
-# Sistema Académico
+# Sistema-Academico
 
 Sistema académico desarrollado en **Java** como proyecto de **Programación Orientada a Objetos**, con enfoque principal en la aplicación de **patrones de diseño** y principios **SOLID**.
 
@@ -13,11 +13,9 @@ El proyecto se encuentra en desarrollo y posteriormente incorporará **base de d
 
 ## Patrones implementados
 
-????
-???
-???
-
-
+- Builder 
+- Strategy 
+- Decorator 
 
 ## Estructura del proyecto
 
@@ -26,19 +24,20 @@ src/
 └── main/
     └── java/
         └── universidad/
-            ├── model/
-            ├── strategy/
-            ├── decorator/
-            ├── service/
-            └── Main.java
+            ├── main/
+            └── model/
+                ├── Builder/
+                └── Strategy/
+                    ├── Decorator/
+                    ├── dictadoClases/
+                    └── Prom/
 ```
 
 ## Tecnologías
 
-* Java
-* Programación Orientada a Objetos
-* Principios SOLID
-* Patrones de diseño
-* Base de datos *(próximamente)*
-* Interfaz gráfica *(próximamente)*
-
+- Java
+- Programación Orientada a Objetos
+- Principios SOLID
+- Patrones de diseño
+- Base de datos *(próximamente)*
+- Interfaz gráfica *(próximamente)*
