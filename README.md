@@ -15,7 +15,8 @@ El proyecto se encuentra en desarrollo y posteriormente incorporará **base de d
 
 - Builder 
 - Strategy 
-- Decorator 
+- Decorator
+- Proxy
 
 ## Estructura del proyecto
 
