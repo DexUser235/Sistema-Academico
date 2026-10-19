@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/resources/static/styles.css">
     <title>Alumno</title>
 </head>
 <body>
-    
+    <h1>Alumnos</h1>
+
+    <h2>Listado de alumnos</h2>
+    <form>
+        <div>
+            <input type="text" placeholder="buscar ID o nombre">
+            <button type="submit">Buscar</button>
+        </div>
+    </form>
+         <button type="button">Nuevo alumno</button>
+    <form>
+        <div>
+          <input type="text" placeholder="nombre completo" required>
+        </div>
+        <div>
+            <input type="text" placeholder="Area" required>
+        </div>
+        <div>
+            <input type="number" placeholder="ciclo"
+            min="0" max="10" step="1" required>
+        </div>
+         <div>
+           <button type="submit">Registrar alumno</button>
+        </div>
+    </form>
 </body>
 </html>
