@@ -1,33 +1,32 @@
-
-body{
-     padding: 20px;
-}
-h1{
+h1 {
     text-align: center;
-    font-size:  22px;
+    font-size: 22px;
     text-transform: uppercase;
-   
 }
-h2{
+
+h2 {
     font-size: 14px;
 }
-body{
+
+body {
     font-family: sans-serif;
-    
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: #3a3a3a;
     font-weight: bold;
 }
-nav a:hover{
-    color: #5775a7;
+
+nav a:hover {
+    color: #317bfb;
 }
 
-
-
-
-
-
-
+.Sub-Areas {
+    font-size: 1rem; 
+    display: flex;            
+    justify-content: center;   
+    gap: 1rem;                 
+    list-style: none;                
+    margin-top: 20px;          
+}
