@@ -1,4 +1,8 @@
-package universidad.main;
+package universidad;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import universidad.model.*;
 import universidad.model.Curso;
@@ -12,8 +16,14 @@ import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
 import java.util.ArrayList;
 import java.util.List;
 
+@SpringBootApplication 
 public class App {
     public static void main(String[] args) {
+        
+        
+        SpringApplication.run(App.class, args);
+
+
         EstrategiaDictado sistemas = new EstrategiaSistemas();
         InfoCursos info = new InfoCursos();
 
