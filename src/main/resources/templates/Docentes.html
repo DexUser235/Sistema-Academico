@@ -1,13 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docente</title>
-      <link rel="stylesheet" th:href="@{/styles.css}">
+    <title>Docentes</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
+    <div th:replace="~{fragmentos :: menu}"></div>
+
     <h1>Docentes</h1>
-      <div th:replace="~{fragmentos :: menu}"></div>
+
+    <section class="buscar-docente">
+        <form th:action="@{/docentes}" method="get">
+            <label for="buscar">Buscar</label>
+            <input id="buscar" name="q" type="search" th:value="${q}"
+                   placeholder="Ej: Juan Pérez" autocomplete="off">
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Lista de docentes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Especialidad</th>
+                    <th>Estrategia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="docente : ${docentes}">
+                    <td th:text="${docente.nombre}"></td>
+                    <td th:text="${docente.especialidades}"></td>
+                    <td th:text="${docente.estrategia.class.simpleName}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>

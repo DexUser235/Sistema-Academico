@@ -9,14 +9,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import universidad.model.Area;
 import universidad.service.AlumnoService;
+import universidad.service.DocenteService;
 
 @Controller
 public class WebController {
 
     private final AlumnoService alumnoService;
+    private final DocenteService docenteService;
 
-    public WebController(AlumnoService alumnoService) {
+    public WebController(AlumnoService alumnoService, DocenteService docenteService) {
         this.alumnoService = alumnoService;
+        this.docenteService = docenteService;
     }
 
     @GetMapping("/")
@@ -53,7 +56,11 @@ public class WebController {
     public String cursos() { return "Cursos"; }
 
     @GetMapping("/docentes")
-    public String docentes() { return "Docentes"; }
+    public String docentes(@RequestParam(required = false) String q, Model model) {
+        model.addAttribute("docentes", docenteService.listar(q));
+        model.addAttribute("q", q);
+        return "Docentes";
+    }
 
     @GetMapping("/matricula")
     public String matricula() { return "Matricula"; }
