@@ -22,7 +22,7 @@ nav a:hover {
     color: #317bfb;
 }
 
-.Sub-Areas {
+.menu {
     font-size: 1rem; 
     display: flex;            
     justify-content: center;   
@@ -45,3 +45,4 @@ th {
     background: #317bfb;
     color: white;
 }
+

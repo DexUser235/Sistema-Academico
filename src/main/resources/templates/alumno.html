@@ -8,8 +8,12 @@
     <title>Alumnos</title>
 </head>
 <body>
-    <a href="/">← Inicio</a>
+    
+    
+
     <h1>Alumnos</h1>
+
+  <div th:replace="~{fragmentos :: menu}"></div>
 
     <p th:if="${mensaje}" th:text="${mensaje}" class="mensaje-ok"></p>
     <p th:if="${error}" th:text="${error}" class="mensaje-error"></p>
@@ -18,7 +22,7 @@
         <form method="get" th:action="@{/alumnos}" class="formulario">
             <label for="buscar">Buscar</label>
             <input id="buscar" name="q" type="search" th:value="${q}"
-                   placeholder="ID o nombre" autocomplete="off">
+            placeholder="ID o nombre" autocomplete="off">
             <button type="submit" class="btn">Buscar</button>
             <button id="btn-nuevo" type="button" class="btn">Nuevo alumno</button>
         </form>

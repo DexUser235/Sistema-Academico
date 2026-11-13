@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/script.js" defer></script>
+      <link rel="stylesheet" th:href="@{/styles.css}">
+
     <title>Cursos</title>
 </head>
 <body>
     <h1>matricula</h1>
 
     <nav>
-        <a href="/">Volver al inicio</a>
+
+        <div th:replace="~{fragmentos :: menu}"></div>
     </nav>
 </body>
 </html>
