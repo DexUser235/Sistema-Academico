@@ -9,11 +9,11 @@
 </head>
 <body>
     
-    
+    <div th:replace="~{fragmentos :: menu}"></div>
 
     <h1>Alumnos</h1>
 
-  <div th:replace="~{fragmentos :: menu}"></div>
+  
 
     <p th:if="${mensaje}" th:text="${mensaje}" class="mensaje-ok"></p>
     <p th:if="${error}" th:text="${error}" class="mensaje-error"></p>
