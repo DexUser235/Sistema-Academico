@@ -1,5 +1,6 @@
 package universidad.main;
 
+import universidad.database.ConexionSingleton;
 import universidad.model.*;
 import universidad.model.Curso;
 import universidad.model.Builder.CursoBuilderConcreto;
@@ -9,12 +10,14 @@ import universidad.model.Strategy.Decorator.DictadoDecorator;
 import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        EstrategiaDictado sistemas = new EstrategiaSistemas();
+       /* EstrategiaDictado sistemas = new EstrategiaSistemas();
         InfoCursos info = new InfoCursos();
 
         Docente docente = new Docente(sistemas, Area.Sistemas, "Matt");
@@ -42,6 +45,20 @@ public class App {
         docente.impartirClase();
         System.out.println("#¬ el docente quiere ver las diapositivas: #¬");
         docente.setEstrategia(decorator);
-        docente.impartirClase();
+        docente.impartirClase();*/
+
+        try (Connection cn =
+                     ConexionSingleton.getInstancia().getConnection()) {
+
+            System.out.println("Conexión exitosa con SQL Server.");
+            System.out.println("Base de datos: " +
+                    cn.getCatalog());
+
+        } catch (SQLException e) {
+
+            System.out.println("Error al conectar con SQL Server:");
+            System.out.println(e.getMessage());
+
+        }
     }
 }
