@@ -9,11 +9,13 @@ import universidad.model.Strategy.Decorator.ConTeoriaDecartor;
 import universidad.model.Strategy.Decorator.DictadoDecorator;
 import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
+import universidad.repository.AlumnoRepository;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class App {
     public static void main(String[] args) {
@@ -47,6 +49,7 @@ public class App {
         docente.setEstrategia(decorator);
         docente.impartirClase();*/
 
+
         try (Connection cn =
                      ConexionSingleton.getInstancia().getConnection()) {
 
@@ -59,6 +62,77 @@ public class App {
             System.out.println("Error al conectar con SQL Server:");
             System.out.println(e.getMessage());
 
+        }
+
+
+
+        AlumnoRepository repository = new AlumnoRepository();
+
+        try {
+            List<Alumno> alumnos = repository.listarTodos();
+
+            if (alumnos.isEmpty()) {
+                System.out.println("No hay alumnos registrados.");
+            } else {
+                for (Alumno alumno : alumnos) {
+                    alumno.consultarEstado();
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al consultar alumnos: " + e.getMessage());
+        }
+
+
+
+        try {
+            Optional<Alumno> resultado = repository.buscarPorId("ALU001");
+
+            if (resultado.isPresent()) {
+                resultado.get().consultarEstado();
+            } else {
+                System.out.println("Alumno no encontrado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        /*Alumno nuevoAlumno = new Alumno(
+                "ALU005",
+                "Pedro Castillo",
+                Area.Sistemas,
+                (byte) 4
+        );
+
+        try {
+            repository.registrar(nuevoAlumno);
+            System.out.println("Alumno registrado correctamente.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al registrar: " + e.getMessage());
+
+
+        Alumno alumnoActualizado = new Alumno(
+                "ALU005",
+                "Pedro Castillo",
+                Area.Civil,
+                (byte) 5
+        );
+
+        try {
+            repository.actualizar(alumnoActualizado);
+            System.out.println("Alumno actualizado correctamente.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
+        }*/
+        try {
+            repository.eliminar("ALU005");
+            System.out.println("Alumno eliminado correctamente.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar: " + e.getMessage());
         }
     }
 }
