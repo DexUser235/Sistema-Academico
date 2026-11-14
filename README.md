@@ -34,10 +34,7 @@ src/
     │               ├── Decorator/
     │               ├── dictadoClases/
     │               └── Prom/
-    └── resources/
-        ├── static/
-        ├── templates/
-        └── application.properties
+    └──
 ```
 
 ## Cómo ejecutar
