@@ -1,6 +1,9 @@
-package universidad.main ;
+package universidad;
 
-import universidad.database.ConexionSingleton;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import universidad.model.*;
 import universidad.model.Curso;
 import universidad.model.Builder.CursoBuilderConcreto;
@@ -9,16 +12,19 @@ import universidad.model.Strategy.Decorator.ConTeoriaDecartor;
 import universidad.model.Strategy.Decorator.DictadoDecorator;
 import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
-import universidad.repository.AlumnoRepository;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+@SpringBootApplication 
 public class App {
     public static void main(String[] args) {
-        /*EstrategiaDictado sistemas = new EstrategiaSistemas();
+        
+        
+        SpringApplication.run(App.class, args);
+
+
+        EstrategiaDictado sistemas = new EstrategiaSistemas();
         InfoCursos info = new InfoCursos();
 
         Docente docente = new Docente(sistemas, Area.Sistemas, "Matt");
@@ -46,79 +52,6 @@ public class App {
         docente.impartirClase();
         System.out.println("#¬ el docente quiere ver las diapositivas: #¬");
         docente.setEstrategia(decorator);
-        docente.impartirClase();*/
-
-
-        ConexionSingleton conexion1 =
-                ConexionSingleton.getInstancia();
-
-        ConexionSingleton conexion2 =
-                ConexionSingleton.getInstancia();
-
-        System.out.println(conexion1 == conexion2);
-
-
-        AlumnoRepository repository = new AlumnoRepository();
-
-        try {
-            List<Alumno> alumnos = repository.listarTodos();
-
-            if (alumnos.isEmpty()) {
-                System.out.println("No hay alumnos registrados.");
-            } else {
-                for (Alumno alumno : alumnos) {
-                    alumno.consultarEstado();
-                }
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error al consultar alumnos: " + e.getMessage());
-        }
-
-        Optional<Alumno> resultado = repository.buscarPorId("ALU001");
-
-        if (resultado.isPresent()) {
-            resultado.get().consultarEstado();
-        } else {
-            System.out.println("Alumno no encontrado.");
-        }
-
-        Alumno nuevoAlumno = new Alumno(
-                "ALU005",
-                "Pedro Castillo",
-                Area.Sistemas,
-                (byte) 4
-        );
-
-        try {
-            repository.registrar(nuevoAlumno);
-            System.out.println("Alumno registrado correctamente.");
-
-        } catch (SQLException e) {
-            System.out.println("Error al registrar: " + e.getMessage());
-        }
-
-        Alumno alumnoActualizado = new Alumno(
-                "ALU005",
-                "Pedro Castillo",
-                Area.Civil,
-                (byte) 5
-        );
-
-        try {
-            repository.actualizar(alumnoActualizado);
-            System.out.println("Alumno actualizado correctamente.");
-
-        } catch (SQLException e) {
-            System.out.println("Error al actualizar: " + e.getMessage());
-        }
-
-        try {
-            repository.eliminar("ALU005");
-            System.out.println("Alumno eliminado correctamente.");
-
-        } catch (SQLException e) {
-            System.out.println("Error al eliminar: " + e.getMessage());
-        }
+        docente.impartirClase();
     }
 }
