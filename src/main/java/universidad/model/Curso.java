@@ -8,6 +8,7 @@ public class Curso {
     private Area especialidad;
     private final List<Matricula> matriculas;
     private Docente docente;
+    private int idCurso;
 
     public Curso() {
         matriculas = new ArrayList<>();
@@ -27,6 +28,14 @@ public class Curso {
 
     public void setEspecialidad(Area especialidad) {
         this.especialidad = especialidad;
+    }
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public List<Matricula> getMatriculas() {

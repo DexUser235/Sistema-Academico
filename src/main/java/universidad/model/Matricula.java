@@ -79,7 +79,7 @@ public class Matricula {
     }
 
     private boolean validarNotas(float nota){
-        return nota >= 0f || nota <= 20f;
+        return nota >= 0f && nota <= 20f;
     }
 
     public static Matricula buscarAlumno(List<Matricula> matriculas, String IdAlumno, Area area) {

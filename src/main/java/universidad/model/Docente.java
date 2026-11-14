@@ -4,6 +4,7 @@ import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 
 public class Docente  {
     private String nombre;
+    private int idDocente;
     private Area especialidades;
     private EstrategiaDictado estrategia;
 
@@ -15,6 +16,14 @@ public class Docente  {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public int getIdDocente() {
+        return idDocente;
+    }
+
+    public void setIdDocente(int idDocente) {
+        this.idDocente = idDocente;
     }
 
     public Area getEspecialidades() {
