@@ -37,4 +37,10 @@ public class InfoCursos {
             System.out.println("------------------------------------------");
         }
     }
+
+    public void mostrarInformacion(Curso curso){
+        if (curso == null) return;
+        System.out.println("Lista de Alumnos del curso: " + curso.getNombreCurso());
+        InfoMatricula.filtrarPorArea(curso.getMatriculas(), curso.getEspecialidad());
+    }
 }

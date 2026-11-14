@@ -33,6 +33,6 @@ public class Alumno {
     }
 
     public void consultarEstado(){
-        System.out.println(" alumno " + nombre + " especialidad "+ especialidad + " ciclo " + ciclo);
+        System.out.println(" alumno: " + nombre + " \nespecialidad: "+ especialidad + " \nciclo: " + ciclo);
     }
 }

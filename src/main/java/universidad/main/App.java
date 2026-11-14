@@ -151,24 +151,17 @@ public class App {
 
         matricula.setNotas(15, 16, 14, 18);
 
-
         InfoCursos infoCursos = new InfoCursos();
-
 
         BoletaReal boletaReal = new BoletaReal(infoCursos);
 
-
         BoletaProxy boletaProxy = new BoletaProxy(boletaReal);
-
 
         Usuario usuarioAlumno = new Usuario(
                 "ALU001",
                 RolUsuario.ALUMNO
         );
 
-
-        System.out.println(
-                boletaProxy.consultarBoleta(usuarioAlumno, matricula)
-        );
+        System.out.println(boletaProxy.consultarBoleta(usuarioAlumno, matricula));
     }
 }

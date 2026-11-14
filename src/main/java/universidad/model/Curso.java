@@ -77,6 +77,13 @@ public class Curso {
     public void matricularAlumno(Alumno alumno) {
         if (alumno == null) return;
 
+        for (Matricula m : this.matriculas) {
+            if (m.getAlumno().getId().equalsIgnoreCase(alumno.getId())) {
+                System.out.println("El alumno " + alumno.getNombre() + " ya se encuentra matriculado en este curso.");
+                return;
+            }
+        }
+
         if (this.matriculas.size() >= 30) {
             System.out.println("No se pueden añadir más matriculas");
             return;
@@ -90,10 +97,5 @@ public class Curso {
 
         Matricula nuevaMatricula = new Matricula(alumno, this);
         this.matriculas.add(nuevaMatricula);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("- Curso: %s \n- Docente: %s \n- alumnos matriculados: %d", getNombreCurso(), getDocente().getNombre(), getMatriculas().size());
     }
 }

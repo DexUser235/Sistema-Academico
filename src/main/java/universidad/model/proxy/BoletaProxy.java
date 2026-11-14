@@ -22,7 +22,6 @@ public class BoletaProxy implements IBoleta {
         }
 
         switch (usuario.getRol()) {
-
             case ALUMNO:
                 if (!usuario.getIdUsuario().equalsIgnoreCase(
                         matricula.getAlumno().getId())) {

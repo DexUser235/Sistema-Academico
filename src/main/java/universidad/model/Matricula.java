@@ -1,8 +1,5 @@
 package universidad.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Matricula {
     private final Alumno alumno;
     private final Curso curso;
@@ -80,37 +77,5 @@ public class Matricula {
 
     private boolean validarNotas(float nota){
         return nota >= 0f && nota <= 20f;
-    }
-
-    public static Matricula buscarAlumno(List<Matricula> matriculas, String IdAlumno, Area area) {
-        if (matriculas == null || IdAlumno == null || area == null) {
-            return null;
-        }
-        for (Matricula m : matriculas) {
-            boolean coincideAlumno = m.getAlumno().getId().equalsIgnoreCase(IdAlumno);
-            boolean coincideArea = m.getAlumno().getEspecialidad() == area || m.getCurso().getEspecialidad() == area;
-
-            if (coincideAlumno && coincideArea) {
-                return m;
-            } else {
-                System.out.println("No se encontró el alumno");
-            }
-        }
-        return null;
-    }
-
-
-    public static List<Matricula> filtrarPorArea(List<Matricula> matriculas, Area area) {
-        List<Matricula> filtrado = new ArrayList<>();
-        if (matriculas == null || area == null) return filtrado;
-
-        for (Matricula m : matriculas) {
-            if (m.getAlumno().getEspecialidad() == area || m.getCurso().getEspecialidad() == area) {
-                filtrado.add(m);
-            } else {
-                System.out.println("No se pudo filtrar");
-            }
-        }
-        return filtrado;
     }
 }
