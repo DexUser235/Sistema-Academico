@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <script th:src="@{/script.js}" defer></script>
+    <title>Alumnos</title>
+</head>
+<body>
+    
+    <div th:replace="~{fragmentos :: menu}"></div>
+
+    <h1>Alumnos</h1>
+
+  
+
+    <p th:if="${mensaje}" th:text="${mensaje}" class="mensaje-ok"></p>
+    <p th:if="${error}" th:text="${error}" class="mensaje-error"></p>
+
+    <section class="buscar-alumno">
+        <form method="get" th:action="@{/alumnos}" class="formulario">
+            <label for="buscar">Buscar</label>
+            <input id="buscar" name="q" type="search" th:value="${q}"
+            placeholder="ID o nombre" autocomplete="off">
+            <button type="submit" class="btn">Buscar</button>
+            <button id="btn-nuevo" type="button" class="btn">Nuevo alumno</button>
+        </form>
+    </section>
+
+    <section class="formulario-alumno" id="panel-registro" hidden>
+        <h2>Registrar alumno</h2>
+        <form method="post" th:action="@{/alumnos}">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+
+            <select name="area" required>
+                <option value="" disabled selected>Área</option>
+                <option th:each="ar : ${areas}" th:value="${ar}" th:text="${ar}"></option>
+            </select>
+
+            <input type="number" name="ciclo" placeholder="Ciclo" min="1" max="10" step="1" required>
+
+            <button type="submit" class="btn">Registrar alumno</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Listado de alumnos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Área</th>
+                    <th>Ciclo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="a : ${alumnos}">
+                    <td th:text="${a.id}"></td>
+                    <td th:text="${a.nombre}"></td>
+                    <td th:text="${a.especialidad}"></td>
+                    <td th:text="${a.ciclo}"></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(alumnos)}">
+                    <td colspan="4">No hay alumnos registrados</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

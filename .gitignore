@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+
+echo ".idea/" >> .gitignore.idea/
