@@ -1,4 +1,4 @@
-package universidad.proxy;
+package universidad.model.proxy;
 
 public class Usuario {
     private final String idUsuario;

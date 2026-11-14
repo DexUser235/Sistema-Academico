@@ -1,4 +1,4 @@
-package universidad.proxy;
+package universidad.model.proxy;
 
 import universidad.model.Matricula;
 

@@ -1,5 +1,5 @@
 
-package universidad.repository;
+package universidad.model.repository;
 
 import universidad.database.ConexionSingleton;
 import universidad.model.Alumno;

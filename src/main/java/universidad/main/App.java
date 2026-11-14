@@ -2,26 +2,24 @@ package universidad.main ;
 
 import universidad.database.ConexionSingleton;
 import universidad.model.*;
-import universidad.model.Curso;
+import universidad.model.Builder.CursoBuilder;
 import universidad.model.Builder.CursoBuilderConcreto;
 import universidad.model.Builder.CursoDirector;
-import universidad.model.Strategy.Decorator.ConTeoriaDecartor;
-import universidad.model.Strategy.Decorator.DictadoDecorator;
+import universidad.model.Curso;
 import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
-import universidad.proxy.BoletaProxy;
-import universidad.proxy.BoletaReal;
-import universidad.proxy.RolUsuario;
-import universidad.proxy.Usuario;
-import universidad.repository.AlumnoRepository;
+import universidad.model.proxy.BoletaProxy;
+import universidad.model.proxy.BoletaReal;
+import universidad.model.proxy.RolUsuario;
+import universidad.model.proxy.Usuario;
+import universidad.model.repository.AlumnoRepository;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         /*EstrategiaDictado sistemas = new EstrategiaSistemas();
         InfoCursos info = new InfoCursos();
 
@@ -35,11 +33,11 @@ public class App {
         CursoBuilderConcreto builder = new CursoBuilderConcreto();
         CursoDirector director = new CursoDirector();
         director.construirCurso(builder,"Algoritmos I", Area.Sistemas, docente, alumnos);
-        Curso curso = builder.getResultado();
+        Curso director = builder.getResultado();
 
-        System.out.println(curso);
+        System.out.println(director);
 
-        Matricula matriculaJuan = Matricula.buscarAlumno(curso.getMatriculas(),"1", Area.Sistemas);
+        Matricula matriculaJuan = Matricula.buscarAlumno(director.getMatriculas(),"1", Area.Sistemas);
         matriculaJuan.setNotas(15.0f, 16.0f, 14.0f, 18.0f);
 
         System.out.println("\nRESULTADO EVALUACIÓN:");
@@ -125,11 +123,7 @@ public class App {
             System.out.println("Error al eliminar: " + e.getMessage());
         }
 
-
-
         System.out.println("\n===== PRUEBA DEL PATRÓN PROXY =====");
-
-// 1. Crear alumno
         Alumno alumno1 = new Alumno(
                 "ALU001",
                 "Juan Gómez",
@@ -146,12 +140,14 @@ public class App {
                 "Matt"
         );
 
+        CursoBuilder builder = new CursoBuilderConcreto();
+        CursoDirector director = new CursoDirector();
 
-        Curso curso = new Curso("Algoritmos I", Area.Sistemas);
+        director.construirCurso(builder, "Algoritmos I", Area.Sistemas, docente, alumno1);
 
+        Curso curso = builder.getResultado();
 
         Matricula matricula = new Matricula(alumno1, curso);
-
 
         matricula.setNotas(15, 16, 14, 18);
 
@@ -174,6 +170,5 @@ public class App {
         System.out.println(
                 boletaProxy.consultarBoleta(usuarioAlumno, matricula)
         );
-
     }
 }

@@ -1,5 +1,5 @@
 
-package universidad.repository;
+package universidad.model.repository;
 
 import universidad.model.Alumno;
 import java.sql.SQLException;
