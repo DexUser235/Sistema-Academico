@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrícula</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <div th:replace="~{fragmentos :: menu}"></div>
+
+    <h1>Matrícula</h1>
+
+  
+    <p th:if="${mensaje}" th:text="${mensaje}" class="mensaje"></p>
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+
+
+    <section class="nueva-matricula">
+        <h2>Matricular alumno</h2>
+        <form th:action="@{/matricula}" method="post">
+            <label for="alumno">Alumno</label>
+            <select id="alumno" name="idAlumno" required>
+                <option value="">Selecciona un alumno</option>
+                <option th:each="a : ${alumnos}"
+                        th:value="${a.id}"
+                        th:text="${a.id} + ' - ' + ${a.nombre} + ' (' + ${a.especialidad} + ')'"></option>
+            </select>
+
+            <label for="curso">Curso</label>
+            <select id="curso" name="idCurso" required>
+                <option value="">cursos</option>
+                <option th:each="c : ${cursos}"
+                        th:value="${c.nombreCurso}"
+                        th:text="${c.nombreCurso} + ' (' + ${c.especialidad} + ')'"></option>
+            </select>
+
+            <button type="submit">Matricular</button>
+        </form>
+    </section>
+
+   
+    <section>
+        <h2>Lista de matrículas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID alumno</th>
+                    <th>Alumno</th>
+                    <th>Área</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="m : ${matriculas}">
+                    <td th:text="${m.alumno.id}"></td>
+                    <td th:text="${m.alumno.nombre}"></td>
+                    <td th:text="${m.alumno.especialidad}"></td>
+                    <td th:text="${m.curso.nombreCurso}"></td>
+                </tr>
+                <tr th:if="${matriculas == null or #lists.isEmpty(matriculas)}">
+                    <td colspan="4">No hay matrículas registradas</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

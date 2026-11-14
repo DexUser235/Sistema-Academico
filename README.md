@@ -2,14 +2,14 @@
 
 Sistema académico desarrollado en **Java** como proyecto de **Programación Orientada a Objetos**, con enfoque principal en la aplicación de **patrones de diseño** y principios **SOLID**.
 
-El proyecto se encuentra en desarrollo y posteriormente incorporará **base de datos** e **interfaz gráfica**.
+El proyecto se encuentra en desarrollo y posteriormente incorporará **base de datos**. La interfaz se implementó con **Spring Boot**.
 
 ## Objetivos
 
 - Aplicar POO en un sistema académico.
 - Implementar patrones de diseño.
 - Mantener el código desacoplado y extensible mediante SOLID.
-- Integrar posteriormente persistencia de datos e interfaz gráfica.
+- Integrar posteriormente persistencia de datos.
 
 ## Patrones implementados
 
@@ -23,22 +23,34 @@ El proyecto se encuentra en desarrollo y posteriormente incorporará **base de d
 ```text
 src/
 └── main/
-    └── java/
-        └── universidad/
-            ├── main/
-            └── model/
-                ├── Builder/
-                └── Strategy/
-                    ├── Decorator/
-                    ├── dictadoClases/
-                    └── Prom/
+    ├── java/
+    │   └── universidad/
+    │       ├── App.java
+    │       ├── controller/
+    │       ├── service/
+    │       └── model/
+    │           ├── Builder/
+    │           └── Strategy/
+    │               ├── Decorator/
+    │               ├── dictadoClases/
+    │               └── Prom/
+    └── resources/
+        ├── static/
+        ├── templates/
+        └── application.properties
 ```
+
+## Cómo ejecutar
+
+Ejecuta la clase `universidad.App` y entra desde el navegador por:
+
+**http://localhost:8080/**
 
 ## Tecnologías
 
 - Java
+- Spring Boot
 - Programación Orientada a Objetos
 - Principios SOLID
 - Patrones de diseño
 - Base de datos *(próximamente)*
-- Interfaz gráfica *(próximamente)*
