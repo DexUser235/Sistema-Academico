@@ -9,6 +9,10 @@ import universidad.model.Strategy.Decorator.ConTeoriaDecartor;
 import universidad.model.Strategy.Decorator.DictadoDecorator;
 import universidad.model.Strategy.dictadoClases.EstrategiaDictado;
 import universidad.model.Strategy.dictadoClases.EstrategiaSistemas;
+import universidad.proxy.BoletaProxy;
+import universidad.proxy.BoletaReal;
+import universidad.proxy.RolUsuario;
+import universidad.proxy.Usuario;
 import universidad.repository.AlumnoRepository;
 
 import java.sql.SQLException;
@@ -120,5 +124,56 @@ public class App {
         } catch (SQLException e) {
             System.out.println("Error al eliminar: " + e.getMessage());
         }
+
+
+
+        System.out.println("\n===== PRUEBA DEL PATRÓN PROXY =====");
+
+// 1. Crear alumno
+        Alumno alumno1 = new Alumno(
+                "ALU001",
+                "Juan Gómez",
+                Area.Sistemas,
+                (byte) 1
+        );
+
+
+        EstrategiaDictado estrategia = new EstrategiaSistemas();
+
+        Docente docente = new Docente(
+                estrategia,
+                Area.Sistemas,
+                "Matt"
+        );
+
+
+        Curso curso = new Curso("Algoritmos I", Area.Sistemas);
+
+
+        Matricula matricula = new Matricula(alumno1, curso);
+
+
+        matricula.setNotas(15, 16, 14, 18);
+
+
+        InfoCursos infoCursos = new InfoCursos();
+
+
+        BoletaReal boletaReal = new BoletaReal(infoCursos);
+
+
+        BoletaProxy boletaProxy = new BoletaProxy(boletaReal);
+
+
+        Usuario usuarioAlumno = new Usuario(
+                "ALU001",
+                RolUsuario.ALUMNO
+        );
+
+
+        System.out.println(
+                boletaProxy.consultarBoleta(usuarioAlumno, matricula)
+        );
+
     }
 }
