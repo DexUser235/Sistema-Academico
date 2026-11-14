@@ -31,4 +31,10 @@ public class AlumnoService {
         alumnos.add(alumno);
         contador++;
     }
+    public Alumno buscarPorId(String id) {
+    return alumnos.stream()
+            .filter(a -> a.getId().equalsIgnoreCase(id))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
+}
 }

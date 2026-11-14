@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import universidad.model.Area;
 import universidad.service.AlumnoService;
+import universidad.service.CursoService;
 import universidad.service.DocenteService;
 
 @Controller
@@ -16,10 +17,13 @@ public class WebController {
 
     private final AlumnoService alumnoService;
     private final DocenteService docenteService;
+    private final CursoService cursoService;
 
-    public WebController(AlumnoService alumnoService, DocenteService docenteService) {
+    public WebController(AlumnoService alumnoService,DocenteService docenteService,
+CursoService cursoService) {
         this.alumnoService = alumnoService;
         this.docenteService = docenteService;
+        this.cursoService = cursoService;
     }
 
     @GetMapping("/")
@@ -36,10 +40,7 @@ public class WebController {
     }
 
     @PostMapping("/alumnos")
-    public String registrar(@RequestParam String nombre,
-                            @RequestParam Area area,
-                            @RequestParam byte ciclo,
-                            RedirectAttributes redirect) {
+    public String registrar(@RequestParam String nombre,@RequestParam Area area,@RequestParam byte ciclo,RedirectAttributes redirect) {
         try {
             alumnoService.registrar(nombre, area, ciclo);
             redirect.addFlashAttribute("mensaje", "Alumno registrado");
@@ -53,7 +54,10 @@ public class WebController {
     public String calificaciones() { return "Calificaciones"; }
 
     @GetMapping("/cursos")
-    public String cursos() { return "Cursos"; }
+    public String cursos(Model model) {
+        model.addAttribute("cursos", cursoService.listar());
+        return "Cursos";
+    }
 
     @GetMapping("/docentes")
     public String docentes(@RequestParam(required = false) String q, Model model) {
@@ -63,5 +67,23 @@ public class WebController {
     }
 
     @GetMapping("/matricula")
-    public String matricula() { return "Matricula"; }
+    public String matricula(Model model) {
+        model.addAttribute("alumnos", alumnoService.listar(null));
+        model.addAttribute("cursos", cursoService.listar());
+        model.addAttribute("matriculas", cursoService.listarMatriculas());   
+    model.addAttribute("areas", Area.values());
+        return "Matricula";
+    }
+
+    @PostMapping("/matricula")
+    public String matricular(@RequestParam String idAlumno,@RequestParam String idCurso,
+    RedirectAttributes redirect) {
+        try {
+            cursoService.matricular(idAlumno, idCurso);
+            redirect.addFlashAttribute("mensaje", "Alumno matriculado");
+        } catch (IllegalArgumentException e) {
+            redirect.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/matricula";
+    }
 }
